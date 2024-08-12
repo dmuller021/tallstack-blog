@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,8 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('blogs', 'blogs.blog')
-    ->middleware(['auth', 'verified'])
-    ->name('blogs');
+Route::resource('blogs', BlogController::class)
+    ->middleware(['auth', 'verified']);
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
