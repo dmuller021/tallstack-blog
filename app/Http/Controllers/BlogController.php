@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Blogs;
 
 class BlogController extends Controller
 {
@@ -27,7 +28,18 @@ class BlogController extends Controller
      */
     public function store (Request $request)
     {
-        //
+        $title = $request->title;
+        $contents = $request->contents;
+        $current_user = $request->user()->id;
+
+
+        $blogPost = Blogs::create([
+            'user_id' => $current_user,
+            'title' => $title,
+            'contents' => $contents
+        ]);
+
+        return redirect()->route('blogs.index');
     }
 
     /**
