@@ -1,9 +1,8 @@
 <div>
     <div>
         @foreach($posts as $post)
-            <div>
-                <h2>{{ $post->title }}</h2>
-                <p>{{ $post->description }}</p>
+            <div class="mb-5">
+                <x-card url="https://google.com" title="{{ $post->title }}" message="{{ $post->contents }}"></x-card>
             </div>
         @endforeach
     </div>
